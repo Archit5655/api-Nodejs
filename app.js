@@ -1,25 +1,16 @@
 import Express from "express";
-import mongoose from "mongoose";
+import { config } from "dotenv";
 
-import userRouter from "./Routes/users.js"
+import userRouter from "./Routes/users.js";
 
-import {ConnecttoDB} from "./data/databse.js"
-ConnecttoDB();
+config({
+  path: "./data/config.env",
+});
 
-
-const app = Express();
+export const app = Express();
 app.use(Express.json());
 app.use(userRouter);
 
 app.get("/", (req, res) => {
   res.send("working");
-});
-
-
-
-
-
-
-app.listen(4000, () => {
-  console.log("server is working");
 });
