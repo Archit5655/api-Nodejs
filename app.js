@@ -10,8 +10,8 @@ config({
 
 export const app = Express();
 app.use(Express.json());
-app.use(userRouter);
 app.use(cookieParser());
+app.use(userRouter);
 
 
 app.get("/", (req, res) => {

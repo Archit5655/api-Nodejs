@@ -35,6 +35,13 @@ export const Login = async (req, res, next) => {
       message:   `Welcome back ${user.name}`,
     });
 };
+export const Logout=(req,res)=>{
+  res.status(200).cookie("token","",{expires: new Date (Date.now())}).json({
+    success:true,
+    message:"Logout successfully",
+    user : req.user,
+  })
+}
 
 export const Newuser = async (req, res) => {
   const { name, email, password } = req.body;
@@ -60,21 +67,11 @@ export const Newuser = async (req, res) => {
       message: " registered Successfully",
     });
 };
-export const Showuserbyid = async (req, res) => {
-   const id="dfcw" 
-   const { token } = req.cookies['token']
+export const Showuserbyid =  (req, res) => {
 
-   if(!token){
-    res.status(404),json({
-        success: false,
-        message:"Login first"
-    })
-   }
-   const decode=jwt.verify(token,process.env.jwtsecret);
-   const user=await User.findById(decode._id)
    res.status(200).json({
     success:true,
-    user,
+    user: req.user,
    })
 
 
