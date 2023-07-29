@@ -12,6 +12,9 @@
   "version": "1.0.0",
   "main": "server.js",
   "type": "module",
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "scripts": {
     "start": " set NODE_ENV=Production && node server.js",
     "dev": " set NODE_ENV=Devlopment && nodemon server.js"
