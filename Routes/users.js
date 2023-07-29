@@ -4,13 +4,13 @@ const router = Express.Router();
 import {
   Newuser,
   Showuserbyid,
-  getalluser,
+  
   Login,
   Logout,
 } from "../controller/user.js";
 import { IsAuth } from "../middleware/auth.js";
 
-router.get("/users/all", getalluser);
+// router.get("/users/all", getalluser);
 
 router.post("/users/new", Newuser);
 router.post("/users/login", Login);
