@@ -12,7 +12,7 @@ export const IsAuth= async(req,res,next)=>{
          message:"Login first"
      })
     }
-    const decode=jwt.verify(token,process.env.jwtsecret);
+    const decode=jwt.verify(token,process.env.jwtsecret,);
      req.user=await User.findById(decode._id)
 next()
 } 
